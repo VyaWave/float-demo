@@ -10,12 +10,13 @@ import VueAxios from "vue-axios";
 export default {
   name: "App",
   created() {},
-  mounted() {}
+  mounted() {},
 };
 </script>
 
 <style>
 @import url("./assets/css/reset.css");
+@import url("//at.alicdn.com/t/font_2096457_02fjrzwol5mt.css");
 
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
