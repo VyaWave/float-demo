@@ -25,7 +25,7 @@ export default {};
 .box {
   height: 60px;
   background: #212832;
-  color: #777;
+  color: #888;
   line-height: 60px;
   .cont {
     max-width: 1200px;
@@ -52,7 +52,13 @@ export default {};
     }
   }
 }
-@media only screen and (max-width: 690px) {
+@media only screen and (min-width: 1000px) and (max-width: 1300px) {
+  .box .cont {
+    max-width: 1000px;
+    padding: 0 20px;
+  }
+}
+@media only screen and (max-width: 750px) {
   .box .social {
     display: none;
   }

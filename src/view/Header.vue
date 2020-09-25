@@ -2,15 +2,25 @@
   <div class="header">
     <div class="content">
       <img class="logo" src="../assets/images/logo.png" alt="">
-      <div>
-        <el-input placeholder="请输入内容" v-model="input1">
-          <template slot="prepend">账号</template>
-          <el-button slot="append" icon="el-icon-search"></el-button>
+      <div></div>
+      <div></div>
+      <div class="search">
+        <el-input placeholder="Address ..." v-model="input">
+          <template slot="prepend">{{language1 ? zh.acount : en.acount}}</template>
+          <el-button slot="append" icon="el-icon-search" @click="handleSearch"></el-button>
         </el-input>
       </div>
       <div class="right">
         <img class="language" src="../assets/images/icon_laug.png" alt="">
-        <span class="text">语言</span>
+        <el-dropdown @command="handleClick">
+          <span class="el-dropdown-link text">
+            {{language}}<i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command="中文">中文</el-dropdown-item>
+            <el-dropdown-item command="English">English</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
       </div>
     </div>
 
@@ -19,10 +29,32 @@
 
 <script>
 export default {
+  props: ["input"],
   data() {
     return {
-      input1: "",
+      language: "中文",
+      language1: true, // true 中文 false 英文
+      zh: {
+        acount: "账户",
+      },
+      en: {
+        acount: "Acount",
+      },
     };
+  },
+  methods: {
+    handleSearch() {
+      this.$emit("searchData", this.input);
+    },
+    handleClick(command) {
+      this.language = command;
+      if (command == "中文") {
+        this.language1 = true;
+      } else {
+        this.language1 = false;
+      }
+      this.$emit("switchLanguage", command);
+    },
   },
 };
 </script>
@@ -34,6 +66,7 @@ export default {
   background: #222832;
   .content {
     max-width: 1200px;
+    padding: 0 20px;
     margin: 0 auto;
     height: 90px;
     display: flex;
@@ -59,15 +92,44 @@ export default {
     color: #f5f6fa;
     margin-left: 15px;
   }
+  .search {
+    display: block;
+  }
 }
 @media only screen and (min-width: 1000px) and (max-width: 1300px) {
+  .header .search {
+    display: block;
+  }
   .header .content {
     max-width: 1000px;
+    padding: 0 20px;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .header .search {
+    display: none;
   }
 }
 </style>
 <style lang="less">
-.header .el-input-group__append button.el-button {
-  background-color: #ffc421;
+.header {
+  .el-input-group {
+    width: 516px;
+  }
+  .el-input-group__append,
+  .el-input-group__append button.el-button {
+    background-color: #ffc421;
+    color: #fff;
+    border: none;
+  }
+  .el-input-group__prepend,
+  .el-input__inner {
+    background: #2b343f;
+    border: none;
+    color: #f5f6fa;
+  }
+  .el-input-group__prepend {
+    border-right: 1px solid #323b48;
+  }
 }
 </style>
