@@ -345,6 +345,11 @@ export default {
     .el-input-group__prepend {
       border-right: 1px solid #323b48;
     }
+    .el-input__inner {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      line-height: 20px;
+    }
   }
   .container .center {
     height: 160px;
