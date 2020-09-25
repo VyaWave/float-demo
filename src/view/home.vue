@@ -282,25 +282,27 @@ export default {
     color: #343434;
   }
 }
-.el-pagination.is-background .el-pager li:not(.disabled).active {
-  background: #222832;
-}
-.el-pagination.is-background .btn-next,
-.el-pagination.is-background .btn-prev,
-.el-pagination.is-background .el-pager li {
-  background: #fff;
-  border: 1px solid #cccccc;
-  border-radius: 3px;
-  &.btn-quicknext,
-  &.btn-quickprev {
-    border: none;
+#app {
+  .el-pagination.is-background .el-pager li:not(.disabled).active {
+    background: #222832;
   }
-}
-.el-pagination.is-background .btn-next,
-.el-pagination.is-background .btn-prev {
-  border: none;
-  &:hover {
-    color: #ffbc02;
+  .el-pagination.is-background .btn-next,
+  .el-pagination.is-background .btn-prev,
+  .el-pagination.is-background .el-pager li {
+    background: #fff;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    &.btn-quicknext,
+    &.btn-quickprev {
+      border: none;
+    }
+  }
+  .el-pagination.is-background .btn-next,
+  .el-pagination.is-background .btn-prev {
+    border: none;
+    &:hover {
+      color: #ffbc02;
+    }
   }
 }
 @media only screen and (min-width: 1000px) and (max-width: 1300px) {
