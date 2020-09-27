@@ -52,15 +52,15 @@
 
       <div class="block">
         <h3 class="title">{{language ? zh.bill : en.bill}}</h3>
-        <el-table :data="transfers.list" style="width: 100%">
-          <el-table-column prop="depend" :label="language ? zh.time : en.time" width="100">
+        <el-table :data="transfers.list" style="width: 100%" tooltip-effect="dark">
+          <el-table-column prop="depend" :label="language ? zh.time : en.time" width="150">
           </el-table-column>
           <el-table-column :label="language ? zh.number : en.number" width="100">
             <template slot-scope="scope">
               {{scope.row.amount/10000}}
             </template>
           </el-table-column>
-          <el-table-column prop="hash" :label="language ? zh.transactions : en.transactions">
+          <el-table-column prop="hash" :label="language ? zh.transactions : en.transactions" show-overflow-tooltip>
           </el-table-column>
           <el-table-column :label="language ? zh.status : en.status" width="100">
             <template slot-scope="scope">
@@ -161,7 +161,7 @@ export default {
     },
     queryTableData(page) {
       let input = "miner " + this.input;
-      let url = this.host + "/Command?input=" + input + "&index=" + page;
+      let url = this.host + "/Command?input=" + input + "&index=" + (page - 1);
       console.log(url);
       this.axios.get(url).then((res) => {
         console.log(res.data);
@@ -282,9 +282,15 @@ export default {
     color: #343434;
   }
 }
+body .el-tooltip__popper {
+  width: 300px;
+}
 #app {
   .el-pagination.is-background .el-pager li:not(.disabled).active {
     background: #222832;
+  }
+  .el-pager {
+    display: none;
   }
   .el-pagination.is-background .btn-next,
   .el-pagination.is-background .btn-prev,
@@ -300,6 +306,10 @@ export default {
   .el-pagination.is-background .btn-next,
   .el-pagination.is-background .btn-prev {
     border: none;
+    margin: 0 40px;
+    span {
+      font-size: 16px;
+    }
     &:hover {
       color: #ffbc02;
     }
