@@ -184,6 +184,12 @@ export default {
   max-width: 1200px;
   padding: 0 20px;
   margin: 0 auto;
+  .el-table .cell,
+  .el-table--border td:first-child .cell,
+  .el-table--border th:first-child .cell {
+    padding-left: 5px;
+    padding-right: 2px;
+  }
 }
 .search {
   display: none;
@@ -338,12 +344,6 @@ body .el-tooltip__popper {
     max-width: 750px;
     margin: 0 auto;
     padding: 0 5px;
-    .el-table .cell,
-    .el-table--border td:first-child .cell,
-    .el-table--border th:first-child .cell {
-      padding-left: 5px;
-      padding-right: 2px;
-    }
   }
 
   .search {
