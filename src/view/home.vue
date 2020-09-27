@@ -62,7 +62,7 @@
           </el-table-column>
           <el-table-column prop="hash" :label="language ? zh.transactions : en.transactions" show-overflow-tooltip>
           </el-table-column>
-          <el-table-column :label="language ? zh.status : en.status" width="100">
+          <el-table-column :label="language ? zh.status : en.status" width="60" show-overflow-tooltip>
             <template slot-scope="scope">
               {{scope.row.hash ? language ? zh.status2 : en.status2 : language ? zh.status1 : en.status1}}
             </template>
@@ -283,7 +283,7 @@ export default {
   }
 }
 body .el-tooltip__popper {
-  width: 300px;
+  max-width: 300px;
 }
 #app {
   .el-pagination.is-background .el-pager li:not(.disabled).active {
@@ -337,8 +337,15 @@ body .el-tooltip__popper {
   .container {
     max-width: 750px;
     margin: 0 auto;
-    padding: 0 10px;
+    padding: 0 5px;
+    .el-table .cell,
+    .el-table--border td:first-child .cell,
+    .el-table--border th:first-child .cell {
+      padding-left: 5px;
+      padding-right: 2px;
+    }
   }
+
   .search {
     display: block;
     margin: 20px 0;
