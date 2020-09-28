@@ -5,7 +5,7 @@
       <div></div>
       <div></div>
       <div class="search">
-        <el-input placeholder="Address ..." v-model="input">
+        <el-input placeholder="Address ..." v-model="value">
           <template slot="prepend">{{language1 ? zh.acount : en.acount}}</template>
           <el-button slot="append" icon="el-icon-search" @click="handleSearch"></el-button>
         </el-input>
@@ -31,7 +31,9 @@
 export default {
   props: ["input"],
   data() {
+    console.log(this.input);
     return {
+      value: this.input || "",
       language: "中文",
       language1: true, // true 中文 false 英文
       zh: {
@@ -42,9 +44,16 @@ export default {
       },
     };
   },
+  watch: {
+    input: function (val) {
+      console.log(val);
+      this.value = val;
+    },
+  },
   methods: {
     handleSearch() {
-      this.$emit("searchData", this.input);
+      console.log(this.value);
+      this.$emit("searchData", this.value);
     },
     handleClick(command) {
       this.language = command;

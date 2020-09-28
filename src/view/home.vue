@@ -131,7 +131,7 @@ export default {
       power: "", // 矿池算力：
       miner: "", // 总矿工数
       height: "", // 高度
-      input: "", //搜索条件
+      input: GetQueryValue("url") || "", //搜索条件
       language: true, // true 中文 false 英文
       zh: ZH,
       en: EN,
@@ -140,6 +140,13 @@ export default {
   components: {
     Footer,
     Header,
+  },
+  watch: {
+    input: function (val) {
+      console.log(val);
+      let str = GetValue(val);
+      document.title = "【" + str + "】Smartx pool";
+    },
   },
   methods: {
     switchLanguage(data) {
@@ -193,9 +200,6 @@ export default {
     },
   },
   mounted() {
-    this.input = GetQueryValue("url");
-    let str = GetValue(GetQueryValue("url"));
-    document.title = "【" + str + "】Smartx pool";
     this.queryData();
     this.queryTableData(this.input);
   },
