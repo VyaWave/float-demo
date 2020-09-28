@@ -80,7 +80,10 @@
       <div class="block">
         <h3 class="title">{{ language ? zh.miner_list : en.preminer_list}}</h3>
         <el-table :data="miners.list" style="width: 100%">
-          <el-table-column type="index" :label="language ? zh.no : en.no" width="80">
+          <el-table-column :label="language ? zh.no : en.no" width="80">
+            <template slot-scope="scope">
+              {{(scope.$index +1) + (miners.page-1) * miners.pageSize}}
+            </template>
           </el-table-column>
           <el-table-column prop="number" :label="language ? zh.name : en.name">
           </el-table-column>
@@ -140,7 +143,6 @@ export default {
   },
   methods: {
     switchLanguage(data) {
-      console.log(data);
       if (data == "中文") {
         this.language = true;
       } else {
@@ -161,32 +163,27 @@ export default {
       });
     },
     handleSizeChange1(page) {
-      console.log(page, "---tri");
       this.transfers.page = page;
       this.queryTableData();
     },
     handleSizeChange2(page) {
-      console.log(page, "---min");
       this.miners.page = page;
       this.queryTableData();
     },
     queryTableData() {
-      console.log(this.transfers.page, this.miners.page);
       let input =
         "miner " +
         this.input +
         " " +
-        (this.transfers.page - 1) +
+        (this.transfers.page - 1) * this.transfers.pageSize +
         " " +
         this.transfers.pageSize +
         " " +
-        (this.miners.page - 1) +
+        (this.miners.page - 1) * this.miners.pageSize +
         " " +
         this.miners.pageSize;
       let url = this.host + "/Command?input=" + input;
-      console.log(url);
       this.axios.get(url).then((res) => {
-        console.log(res.data);
         this.miners.list = res.data.miners;
         this.miners.total = res.data.totalMiners;
         this.transfers.list = res.data.transfers;
