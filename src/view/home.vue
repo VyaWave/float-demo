@@ -71,7 +71,7 @@
       </div>
 
       <div class="page">
-        <el-pagination v-if="transfers.total>10" background :prev-text="language ? zh.prev : en.prev" :pager-count="5" :next-text="language ? zh.next : en.next" layout="prev, pager, next" :total="transfers.total" @current-change="queryTableData" :current-page="transfers.page">
+        <el-pagination v-if="transfers.total>10" background :prev-text="language ? zh.prev : en.prev" :pager-count="5" :next-text="language ? zh.next : en.next" layout="prev, pager, next" :total="transfers.total" @current-change="handleSizeChange1" :current-page="transfers.page">
         </el-pagination>
       </div>
 
@@ -92,7 +92,7 @@
       </div>
 
       <div class="page">
-        <el-pagination v-if="miners.total>10" background :prev-text="language ? zh.prev : en.prev" :pager-count="5" :next-text="language ? zh.next : en.next" layout="prev, pager, next" :total="miners.total" @current-change="queryTableData" :current-page="miners.page">
+        <el-pagination v-if="miners.total>10" background :prev-text="language ? zh.prev : en.prev" :pager-count="5" :next-text="language ? zh.next : en.next" layout="prev, pager, next" :total="miners.total" @current-change="handleSizeChange2" :current-page="miners.page">
         </el-pagination>
       </div>
     </div>
@@ -105,6 +105,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import ZH from "../assets/script/zh.json";
 import EN from "../assets/script/EN.json";
+import { GetQueryValue, GetValue } from "../assets/script/utils";
 export default {
   name: "home",
   data() {
@@ -113,19 +114,21 @@ export default {
       miners: {
         list: [], // 矿机列表
         total: 0, // 矿机列表总条数
-        page: 1, //当前页数
+        page: 1, // 当前页数
+        pageSize: 10, // 每页显示条数
       },
       transfers: {
         list: [], // 账单列表
-        total: 12, // 账单列表总条数
+        total: 10000000, // 账单列表总条数
         page: 1, // 当前页数
+        pageSize: 10, // 每页显示条数
       },
       totalPower: "", // 算力
       amount_cur: "", // 未分账
       power: "", // 矿池算力：
       miner: "", // 总矿工数
       height: "", // 高度
-      input: "Y7ECVSUDQyiaoditKMbEEyu1KaoQiLGMj", //搜索条件
+      input: "", //搜索条件
       language: true, // true 中文 false 英文
       zh: ZH,
       en: EN,
@@ -151,21 +154,41 @@ export default {
     queryData() {
       let url = this.host + "/Stats?style=2";
       this.axios.get(url).then((res) => {
-        console.log(res.data);
         let arr = res.data.split(" ");
-        console.log(arr);
         this.height = arr[0].split(":")[1];
         this.power = arr[1].split(":")[1];
         this.miner = arr[2].split(":")[1];
       });
     },
-    queryTableData(page) {
-      let input = "miner " + this.input;
-      let url = this.host + "/Command?input=" + input + "&index=" + (page - 1);
+    handleSizeChange1(page) {
+      console.log(page, "---tri");
+      this.transfers.page = page;
+      this.queryTableData();
+    },
+    handleSizeChange2(page) {
+      console.log(page, "---min");
+      this.miners.page = page;
+      this.queryTableData();
+    },
+    queryTableData() {
+      console.log(this.transfers.page, this.miners.page);
+      let input =
+        "miner " +
+        this.input +
+        " " +
+        (this.transfers.page - 1) +
+        " " +
+        this.transfers.pageSize +
+        " " +
+        (this.miners.page - 1) +
+        " " +
+        this.miners.pageSize;
+      let url = this.host + "/Command?input=" + input;
       console.log(url);
       this.axios.get(url).then((res) => {
         console.log(res.data);
         this.miners.list = res.data.miners;
+        this.miners.total = res.data.totalMiners;
         this.transfers.list = res.data.transfers;
         this.totalPower = res.data.totalPower;
         this.amount_cur = res.data.amount_cur;
@@ -173,6 +196,9 @@ export default {
     },
   },
   mounted() {
+    this.input = GetQueryValue("url");
+    let str = GetValue(GetQueryValue("url"));
+    document.title = "【" + str + "】Smartx pool";
     this.queryData();
     this.queryTableData(this.input);
   },
