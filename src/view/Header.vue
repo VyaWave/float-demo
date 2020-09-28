@@ -31,7 +31,6 @@
 export default {
   props: ["input"],
   data() {
-    console.log(this.input);
     return {
       value: this.input || "",
       language: "中文",
