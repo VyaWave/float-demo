@@ -46,13 +46,11 @@ export default {
   },
   watch: {
     input: function (val) {
-      console.log(val);
       this.value = val;
     },
   },
   methods: {
     handleSearch() {
-      console.log(this.value);
       this.$emit("searchData", this.value);
     },
     handleClick(command) {

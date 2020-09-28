@@ -143,7 +143,6 @@ export default {
   },
   watch: {
     input: function (val) {
-      console.log(val);
       let str = GetValue(val);
       document.title = "【" + str + "】Smartx pool";
     },
