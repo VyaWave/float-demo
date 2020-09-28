@@ -26,13 +26,14 @@ export default {};
   height: 60px;
   background: #212832;
   color: #888;
-  line-height: 60px;
   .cont {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
+    height: 60px;
+    align-items: center;
   }
   .social {
     display: flex;
