@@ -11,7 +11,7 @@
       <div class="center">
         <div class="item">
           <div class="cont">
-            <p class="text">{{miners.list.length}}</p>
+            <p class="text">{{miners.total}}</p>
             <p class="label">{{language ? zh.miner : en.miner}}</p>
           </div>
           <img src="../assets/images/img_miner.png" />
