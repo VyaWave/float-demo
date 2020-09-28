@@ -25,7 +25,7 @@
         </div>
         <div class="item">
           <div class="cont">
-            <p class="text">{{amount_cur/1000}}</p>
+            <p class="text">{{amount_cur/10000}}</p>
             <p class="label">{{language ? zh.undivided : en.undivided}}</p>
           </div>
           <img src="../assets/images/img_coin.png" />
