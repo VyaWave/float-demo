@@ -126,6 +126,15 @@ export default {
       flex-direction: column;
       align-items: center;
 
+      & > div {
+        margin-left: 15px;
+
+        &:first-child {
+          color: #9c9696;
+          font-size: 14px;
+        }
+      }
+
       &:hover{
         width: 212px;
         height: 67px;
@@ -133,10 +142,17 @@ export default {
         background-size: 40px 40px;
         box-shadow: 0px 20px 40px 0px rgba(41, 99, 251, 0.5);
         color: #FFFFFF;
-      }
 
-      & > div {
-        margin-left: 15px;
+
+        & > div {
+
+           &:first-child {
+
+            color: white;
+
+           }
+        }
+
       }
     }
     .download1{
