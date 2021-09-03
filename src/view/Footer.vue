@@ -1,18 +1,9 @@
 <template>
   <div class="box">
     <div class="cont">
-      <div class="footer">© 2020 SmartX Community.</div>
-      <div>
-        <ul class="social">
-          <li><a target="_blank" href="https://twitter.com/SmartXOne"><i class="iconfont icon-twitter"></i> </a></li>
-          <li><a target="_blank" href="https://www.facebook.com/SmartX.OneOfficial"><i class="iconfont icon-facebook"></i> </a></li>
-          <li><a target="_blank" href="https://github.com/smartx-core"><i class="iconfont icon-github"></i></a></li>
-          <li><a target="_blank" href="https://t.me/smartx_en"><i class="iconfont icon-telegram"></i></a></li>
-          <li><a target="_blank" href="https://medium.com/smartx"><i class="iconfont icon-medium"></i></a></li>
-          <li><a target="_blank" href="https://discord.gg/JymqJyS"><i class="iconfont icon-discord"></i></a></li>
-          <li><a target="_blank" href="mailto:social@smartx.one"><i class="iconfont icon-email"></i></a></li>
-        </ul>
-      </div>
+      <img class="float" src="../assets/images/new/Float.png" alt="">
+      <img class="map" src="../assets/images/new/map.png" alt="">
+      <div class="footer">Copyright © 2021 XXXXXXXXXXXXXXXXXX</div>
     </div>
   </div>
 </template>
@@ -23,8 +14,8 @@ export default {};
 
 <style lang="less" scoped>
 .box {
-  height: 60px;
-  background: #212832;
+  height: 310px;
+  background: #1C1D28;
   color: #888;
   .cont {
     max-width: 1200px;
@@ -32,26 +23,36 @@ export default {};
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
-    height: 60px;
+    height: 310px;
     align-items: center;
-  }
-  .social {
-    display: flex;
-    justify-content: space-between;
-    width: 270px;
-    li a {
-      .iconfont {
-        color: #777;
-        font-size: 20px;
-      }
-      &:hover {
-        .iconfont {
-          color: #000;
-          font-size: 20px;
-        }
-      }
+    position: relative;
+    img{
+      position: absolute;
+      display: inline-block;
+    }
+    .float{
+      top: 40px;
+      left: 0;
+      width: 59px;
+      height: 18px;
+    }
+    .map{
+      top: 100px;
+      left: 25px;
+      width: 177px;
+      height: 73px;
+    }
+    .footer{
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      border-top: 1px solid #888;
+      font-size: 12px;
+      position: absolute;
+      bottom: 0;
     }
   }
+ 
 }
 @media only screen and (min-width: 1000px) and (max-width: 1300px) {
   .box .cont {

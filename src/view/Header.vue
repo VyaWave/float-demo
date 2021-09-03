@@ -1,24 +1,25 @@
 <template>
   <div class="header">
     <div class="content">
-      <img class="logo" src="../assets/images/logo.png" alt="">
-      <div></div>
-      <div></div>
-      <div class="search">
-        <el-input placeholder="Address ..." v-model="value">
-          <template slot="prepend">{{language1 ? zh.acount : en.acount}}</template>
-          <el-button slot="append" icon="el-icon-search" @click="handleSearch"></el-button>
-        </el-input>
+      <img class="logo" src="../assets/images/new/logo.png" alt="">
+      <div class="nav">
+        <div>{{language1 ? zh.Home : en.Home}}</div>
+        <div>{{language1 ? zh.Github : en.Github}}</div>
+        <div>{{language1 ? zh.Group : en.Group}}</div>
+        <div>{{language1 ? zh.ContractUs : en.ContractUs}}</div>
+        <div class="flex">
+          <img src="../assets/images/new/gitHub_icon.png" alt="">
+          <div>Get Status <i class="el-icon-arrow-right"></i></div>
+        </div>
       </div>
       <div class="right">
-        <img class="language" src="../assets/images/icon_laug.png" alt="">
         <el-dropdown @command="handleClick">
           <span class="el-dropdown-link text">
             {{language}}<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="中文">中文</el-dropdown-item>
-            <el-dropdown-item command="English">English</el-dropdown-item>
+            <el-dropdown-item command="En">En</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -28,19 +29,17 @@
 </template>
 
 <script>
+import ZH from "../assets/script/zh.json";
+import EN from "../assets/script/EN.json";
 export default {
   props: ["input"],
   data() {
     return {
       value: this.input || "",
-      language: "中文",
-      language1: true, // true 中文 false 英文
-      zh: {
-        acount: "账户",
-      },
-      en: {
-        acount: "Acount",
-      },
+      language: "En",
+      language1: false, // true 中文 false 英文
+      zh: ZH,
+      en: EN,
     };
   },
   watch: {
@@ -68,24 +67,61 @@ export default {
 <style lang="less" scoped>
 .header {
   width: 100%;
-  height: 90px;
-  background: #222832;
+  height: 130px;
+  background: #fff;
+  color: #333;
+  border-bottom: 2px solid #FAFAFA;
   .content {
     max-width: 1200px;
     padding: 0 20px;
     margin: 0 auto;
-    height: 90px;
+    height: 130px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .nav{
+      display: flex;
+      width: 80%;
+      justify-content: space-around;
+      align-items: center;
+      font-size: 18px;
+      font-family: 'SourceHanSansCN-Regular';
+      .flex{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        img{
+          width: 32px;
+          height: 31px;
+          margin-right: 32px;
+        }
+        div{
+          border: 1px solid #DEDFE4;
+          height: 60px;
+          width: 200px;
+          text-align: center;
+          line-height: 60px;
+          i{
+            margin-left: 20px;
+          }
+        }
+      }
+    }
     .right {
       display: flex;
       align-items: center;
+      justify-content: center;
+      border: 1px solid #DEDFE4;
+      width: 119px;
+      height: 60px;
+      i{
+        margin-left: 10px;
+      }
     }
   }
   .logo {
-    width: 210px;
-    height: 24px;
+    width: 133px;
+    height: 44px;
   }
   .language {
     width: 20px;
@@ -95,11 +131,8 @@ export default {
     font-size: 18px;
     font-family: PingFang SC;
     font-weight: 500;
-    color: #f5f6fa;
+    color: #333;
     margin-left: 15px;
-  }
-  .search {
-    display: block;
   }
 }
 @media only screen and (min-width: 1000px) and (max-width: 1300px) {

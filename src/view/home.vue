@@ -1,102 +1,32 @@
 <template>
   <div class="day_records">
-    <Header :input="input" @searchData="searchData" @switchLanguage="switchLanguage" />
+    <Header @switchLanguage="switchLanguage" />
     <div class="container">
-      <div class="search">
-        <el-input placeholder="Address ..." v-model="input">
-          <template slot="prepend">{{language ? zh.acount : en.acount}}</template>
-          <el-button slot="append" icon="el-icon-search" @click="queryTableData()"></el-button>
-        </el-input>
+      <div class="block1">
+
       </div>
-      <div class="center">
-        <div class="item">
-          <div class="cont">
-            <p class="text">{{miners.total}}</p>
-            <p class="label">{{language ? zh.miner : en.miner}}</p>
-          </div>
-          <img src="../assets/images/img_miner.png" />
-        </div>
-        <div class="item">
-          <div class="cont">
-            <p class="text">{{totalPower}}</p>
-            <p class="label">{{language ? zh.power : en.power}}</p>
-          </div>
-          <img src="../assets/images/img_power.png" />
-        </div>
-        <div class="item">
-          <div class="cont">
-            <p class="text">{{amount_cur/10000}}</p>
-            <p class="label">{{language ? zh.undivided : en.undivided}}</p>
-          </div>
-          <img src="../assets/images/img_coin.png" />
-        </div>
-        <div class="item">
-          <div class="cont">
-            <div class="num">
-              <span>{{language ? zh.high : en.high}}：</span>
-              <b>{{height}}</b>
+      <div class="block2"></div>
+      <div class="block3"></div>
+      <div class="block4"></div>
+      <div class="block5"></div>
+      <div class="block6 flex">
+        <div class="left">
+          <div class="title">Mobile</div>
+          <div class="text">Private messaging, secure crypto transactions, Web3 DApp browsing in your pocket.</div>
+          <div class="flex">
+            <div class="download btn">
+              <div>Download on the</div>
+              <div>App Store</div>
             </div>
-            <div class="num">
-              <span>{{language ? zh.pool : en.pool}}：</span>
-              <b>{{power}}</b>
-            </div>
-            <div class="num">
-              <span>{{language ? zh.miners : en.miners}}：</span>
-              <b>{{miner}}</b>
+            <div class="download download1 btn">
+              <div>Download on the</div>
+              <div>Android</div>
             </div>
           </div>
         </div>
-      </div>
-
-      <h3 class="title_phone">{{language ? zh.bill : en.bill}}</h3>
-
-      <div class="block">
-        <h3 class="title">{{language ? zh.bill : en.bill}}</h3>
-        <el-table :data="transfers.list" style="width: 100%" tooltip-effect="dark">
-          <el-table-column prop="depend" :label="language ? zh.time : en.time" width="150">
-          </el-table-column>
-          <el-table-column :label="language ? zh.number : en.number" width="100">
-            <template slot-scope="scope">
-              {{scope.row.amount/10000}}
-            </template>
-          </el-table-column>
-          <el-table-column prop="hash" :label="language ? zh.transactions : en.transactions" show-overflow-tooltip>
-          </el-table-column>
-          <el-table-column :label="language ? zh.status : en.status" width="60" show-overflow-tooltip>
-            <template slot-scope="scope">
-              {{scope.row.hash ? language ? zh.status2 : en.status2 : language ? zh.status1 : en.status1}}
-            </template>
-          </el-table-column>
-        </el-table>
-      </div>
-
-      <div class="page">
-        <el-pagination v-if="transfers.total>10" background :prev-text="language ? zh.prev : en.prev" :pager-count="5" :next-text="language ? zh.next : en.next" layout="prev, pager, next" :total="transfers.total" @current-change="handleSizeChange1" :current-page="transfers.page">
-        </el-pagination>
-      </div>
-
-      <h3 class="title_phone">{{language ? zh.miner_list : en.preminer_list}}</h3>
-
-      <div class="block">
-        <h3 class="title">{{ language ? zh.miner_list : en.preminer_list}}</h3>
-        <el-table :data="miners.list" style="width: 100%">
-          <el-table-column :label="language ? zh.no : en.no" width="80">
-            <template slot-scope="scope">
-              {{(scope.$index +1) + (miners.page-1) * miners.pageSize}}
-            </template>
-          </el-table-column>
-          <el-table-column prop="number" :label="language ? zh.name : en.name">
-          </el-table-column>
-          <el-table-column prop="power_cur" :label="language ? zh.real : en.real">
-          </el-table-column>
-          <el-table-column prop="power_average" :label="language ? zh.avg : en.avg">
-          </el-table-column>
-        </el-table>
-      </div>
-
-      <div class="page">
-        <el-pagination v-if="miners.total>10" background :prev-text="language ? zh.prev : en.prev" :pager-count="5" :next-text="language ? zh.next : en.next" layout="prev, pager, next" :total="miners.total" @current-change="handleSizeChange2" :current-page="miners.page">
-        </el-pagination>
+        <div>
+          <img class="xiaoguo" src="../assets/images/new/xiaoguo.png" alt="">
+        </div>
       </div>
     </div>
     <Footer />
@@ -113,26 +43,7 @@ export default {
   name: "home",
   data() {
     return {
-      host: "http://www.iobft.com:8101", //请求接口的域名
-      miners: {
-        list: [], // 矿机列表
-        total: 0, // 矿机列表总条数
-        page: 1, // 当前页数
-        pageSize: 10, // 每页显示条数
-      },
-      transfers: {
-        list: [], // 账单列表
-        total: 10000000, // 账单列表总条数
-        page: 1, // 当前页数
-        pageSize: 10, // 每页显示条数
-      },
-      totalPower: "", // 算力
-      amount_cur: "", // 未分账
-      power: "", // 矿池算力：
-      miner: "", // 总矿工数
-      height: "", // 高度
-      input: GetQueryValue("url") || "", //搜索条件
-      language: true, // true 中文 false 英文
+      language: false, // true 中文 false 英文
       zh: ZH,
       en: EN,
     };
@@ -155,52 +66,8 @@ export default {
         this.language = false;
       }
     },
-    searchData(data) {
-      this.input = data;
-      this.queryTableData();
-    },
-    queryData() {
-      let url = this.host + "/Stats?style=2";
-      this.axios.get(url).then((res) => {
-        let arr = res.data.split(" ");
-        this.height = arr[0].split(":")[1];
-        this.power = arr[1].split(":")[1];
-        this.miner = arr[2].split(":")[1];
-      });
-    },
-    handleSizeChange1(page) {
-      this.transfers.page = page;
-      this.queryTableData();
-    },
-    handleSizeChange2(page) {
-      this.miners.page = page;
-      this.queryTableData();
-    },
-    queryTableData() {
-      let input =
-        "miner " +
-        this.input +
-        " " +
-        (this.transfers.page - 1) * this.transfers.pageSize +
-        " " +
-        this.transfers.pageSize +
-        " " +
-        (this.miners.page - 1) * this.miners.pageSize +
-        " " +
-        this.miners.pageSize;
-      let url = this.host + "/Command?input=" + input;
-      this.axios.get(url).then((res) => {
-        this.miners.list = res.data.miners;
-        this.miners.total = res.data.totalMiners;
-        this.transfers.list = res.data.transfers;
-        this.totalPower = res.data.totalPower;
-        this.amount_cur = res.data.amount_cur;
-      });
-    },
   },
   mounted() {
-    this.queryData();
-    this.queryTableData(this.input);
   },
   destroyed() {},
 };
@@ -210,143 +77,86 @@ export default {
   max-width: 1200px;
   padding: 0 20px;
   margin: 0 auto;
-  .el-table .cell,
-  .el-table--border td:first-child .cell,
-  .el-table--border th:first-child .cell {
-    padding-left: 5px;
-    padding-right: 2px;
-  }
-}
-.search {
-  display: none;
-}
-.center {
-  margin: 50px 0;
-  height: 120px;
-  .item {
-    width: 23%;
-    height: 120px;
-    background: #ffffff;
-    box-shadow: 1px 4px 8px 0px #dee3e8;
-    border-radius: 6px;
-    padding: 20px;
+  background: #fff;
+  .flex{
     display: flex;
-    justify-content: space-between;
-    float: left;
-    margin-right: 2%;
-    &:nth-child(3) {
-      width: 28%;
-    }
-    &:nth-child(4) {
-      width: 20%;
-      margin-right: 0;
-    }
-    .cont {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      width: 100%;
-    }
-    img {
-      width: 90px;
-      height: 90px;
-    }
-    .label {
-      font-size: 18px;
-      font-family: PingFang SC;
-      font-weight: 500;
-      color: #9a9a9a;
-    }
-    .text {
-      font-size: 32px;
-      font-family: DINPro;
-      font-weight: 500;
-      color: #121212;
-    }
-    .num {
-      font-size: 18px;
-      height: 20px;
-      font-family: PingFang SC;
-      font-weight: 800;
-      color: #ffbc01;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      span {
-        font-size: 16px;
-        font-family: PingFang SC;
-        font-weight: 500;
-        color: #9a9a9a;
-        line-height: 30px;
+    justify-content: space-around;
+  }
+  .block1{
+    height: 950px;
+  }
+  .block6{
+    margin-bottom: 68px;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: #14141A;
+    text-align: center;
+    .left{
+      width: 515px;
+      img{
+        display: inline-block;
+        width: 40px;
+        height: 40px;
       }
     }
-  }
-}
-.title_phone {
-  display: none;
-}
-.block {
-  background: #fff;
-  padding: 35px;
-  box-shadow: 1px 4px 8px 0px #dee3e8;
-  border-radius: 6px;
-  .title {
-    font-size: 24px;
-    font-family: PingFang SC;
-    font-weight: bold;
-    color: #343434;
-    margin-bottom: 35px;
-  }
-}
-.page {
-  background: #fff;
-  padding: 15px 0 50px;
-  margin-bottom: 60px;
-  text-align: center;
-}
-.el-table {
-  thead tr,
-  thead th {
-    background: #f8f8f8;
-    font-size: 16px;
-    font-family: PingFang SC;
-    font-weight: bold;
-    color: #343434;
-  }
-}
-body .el-tooltip__popper {
-  max-width: 300px;
-}
-#app {
-  .el-pagination.is-background .el-pager li:not(.disabled).active {
-    background: #222832;
-  }
-  .el-pager {
-    display: none;
-  }
-  .el-pagination.is-background .btn-next,
-  .el-pagination.is-background .btn-prev,
-  .el-pagination.is-background .el-pager li {
-    background: #fff;
-    border: 1px solid #cccccc;
-    border-radius: 3px;
-    &.btn-quicknext,
-    &.btn-quickprev {
-      border: none;
+    .title{
+      font-size: 40px;
+      font-weight: 800;
+      margin: 26px 0 56px;
     }
-  }
-  .el-pagination.is-background .btn-next,
-  .el-pagination.is-background .btn-prev {
-    border: none;
-    margin: 0 40px;
-    span {
+    .text{
+      color: #999;
       font-size: 16px;
+      margin-bottom: 86px;
     }
-    &:hover {
-      color: #ffbc02;
+    .download{
+      transition: background 0.3s ease;
+      width: 212px;
+      height: 67px;
+      background: #FFFFFF url('../assets/images/new/mac.png') no-repeat 10px center;
+      box-shadow: 0px 6px 12px 0px rgba(229, 229, 229, 0.2);
+      border-radius: 2px;
+      background-size: 40px 40px;
+      cursor: pointer;
+      border-radius: 5px;
+
+
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &:hover{
+        width: 212px;
+        height: 67px;
+        background: #2963FB url('../assets/images/new/mac_hover.png') no-repeat  10px center;
+        background-size: 40px 40px;
+        box-shadow: 0px 20px 40px 0px rgba(41, 99, 251, 0.5);
+        color: #FFFFFF;
+      }
+
+      & > div {
+        margin-left: 15px;
+      }
+    }
+    .download1{
+      background:  url('../assets/images/new/fill.png') no-repeat  10px center;
+      background-size: 40px 40px;
+
+      &:hover{
+        width: 212px;
+        height: 67px;
+        background: #2963FB url('../assets/images/new/fill_hover.png') no-repeat  10px center;
+        background-size: 40px 40px;
+      }
+    }
+    .xiaoguo{
+      width: 575px;
     }
   }
 }
+
+
 @media only screen and (min-width: 1000px) and (max-width: 1300px) {
   .container {
     max-width: 1000px;
