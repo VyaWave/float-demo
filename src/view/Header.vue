@@ -73,7 +73,7 @@ export default {
   border-bottom: 2px solid #FAFAFA;
   .content {
     max-width: 1200px;
-    padding: 0 20px;
+    // padding: 0 20px;
     margin: 0 auto;
     height: 130px;
     display: flex;
@@ -101,6 +101,7 @@ export default {
           width: 200px;
           text-align: center;
           line-height: 60px;
+          cursor: pointer;
           i{
             margin-left: 20px;
           }
