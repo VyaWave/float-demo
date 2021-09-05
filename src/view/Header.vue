@@ -94,9 +94,11 @@ export default {
 
     const LANG = GET_LOCALE();
 
+    const lang = localStorage.getItem("current_lang");
+
     return {
       value: this.input || "",
-      language: localStorage.getItem("current_lang") === "zh" ? "中文": "English",
+      language: lang && lang === 'zh' ? "中文": "English",
       lang: LANG,
       isMobile:false,
       dialogVisible: false
