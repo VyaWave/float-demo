@@ -81,19 +81,19 @@
         <div class="cont">
           <img src="../assets/images/new/left_bg.png" class="left_bg"/>
           <div class="one">
-            <div class="block-3-img"></div>
+            <div class="block-3-img icon1"></div>
             <p class="title">5%</p>
             <p class="line"></p>
             <p class="con">{{lang.FloatMoney1}}</p>
           </div>
           <div class="one">
-            <div class="block-3-img"></div>
+            <div class="block-3-img icon2"></div>
             <p class="title">15%</p>
             <p class="line"></p>
             <p class="con">{{lang.FloatMoney2}}</p>
           </div>
           <div class="one">
-            <div class="block-3-img"></div>
+            <div class="block-3-img icon3"></div>
             <p class="title">80% {{lang.AirDrop}}</p>
             <p class="line"></p>
             <p class="con">{{lang.FloatMoney3}}</p>
@@ -534,11 +534,19 @@ export default {
         margin: 0 auto auto;
         width: 130px;
         height: 178px;
-
-        background: url("../assets/images/new/block2.png");
-        background-size: cover;
-
         margin-top: -100px;
+        &.icon1{
+          background: url("../assets/images/new/icon1.png");
+          background-size: cover;
+        }
+        &.icon2{
+          background: url("../assets/images/new/icon2.png");
+          background-size: cover;
+        }
+        &.icon3{
+          background: url("../assets/images/new/icon3.png");
+          background-size: cover;
+        }
 
       }
 
