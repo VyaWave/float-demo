@@ -43,7 +43,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: 'https://static.weiya.design/float_demo/', // /qdp-qiyeweixin-webui
+    assetsPublicPath: '', // /qdp-qiyeweixin-webui
 
     /**
      * Source Maps
