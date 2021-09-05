@@ -2,6 +2,7 @@
   <div class="day_records">
     <Header @switchLanguage="switchLanguage" />
       <div class="block1">
+        <div class="black"></div>
         <div class="left">
           <div class="oneline">
             CRYPTO WALLET
@@ -165,6 +166,13 @@ export default {
 .block1{
   position: relative;
   height: 600px;
+  .black{
+    width: 20%;
+    height: 550px;
+    background:#000;
+    position: absolute;
+    left: 80%;
+  }
   .left{
     width: 1200px;
     position: absolute;
@@ -211,13 +219,16 @@ export default {
   }
   .right{
     margin-top: 100px;
+    height: 550px;
     background: url('../assets/images/new/right_bg.png') no-repeat;
+    background-size: 100% 100%;
+    width: 450px;
+    margin-left: 750px;
     .block_img{
       position: absolute;
-      width: 1200px;
-      right: 50%;
-      margin-right: -1200px;
+      left: 44%;
       margin-top: 54px;
+      z-index: 1;
     }
     
   }
