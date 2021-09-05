@@ -36,7 +36,6 @@
       </div>
     </div>
     <div class="container">
-
       <div class="block2">
         <div class="title">{{lang.FloatBigTitle}}</div>
         <div class="tips">{{lang.FloatBigDesc}}</div>
@@ -76,31 +75,39 @@
           </div>
         </div>
       </div>
-      <div class="block3">
+    </div>
+    <div class="block3">
+        <div class="black"></div>
+        <div class="cont">
+          <img src="../assets/images/new/left_bg.png" class="left_bg"/>
+          <div class="one">
+            <div class="block-3-img"></div>
+            <p class="title">5%</p>
+            <p class="line"></p>
+            <p class="con">{{lang.FloatMoney1}}</p>
+          </div>
+          <div class="one">
+            <div class="block-3-img"></div>
+            <p class="title">15%</p>
+            <p class="line"></p>
+            <p class="con">{{lang.FloatMoney2}}</p>
+          </div>
+          <div class="one">
+            <div class="block-3-img"></div>
+            <p class="title">80% {{lang.AirDrop}}</p>
+            <p class="line"></p>
+            <p class="con">{{lang.FloatMoney3}}</p>
+          </div>
+          <div class="last_block">
+            <p>{{lang.FloatBigMoney}}</p>
+          </div>
+        </div>
 
-        <img src="../assets/images/new/left_bg.png" class="left_bg"/>
-        <div class="one">
-          <div class="block-3-img"></div>
-          <p class="title">5%</p>
-          <p class="line"></p>
-          <p class="con">{{lang.FloatMoney1}}</p>
-        </div>
-        <div class="one">
-          <div class="block-3-img"></div>
-          <p class="title">15%</p>
-          <p class="line"></p>
-          <p class="con">{{lang.FloatMoney2}}</p>
-        </div>
-        <div class="one">
-          <div class="block-3-img"></div>
-          <p class="title">80% {{lang.AirDrop}}</p>
-          <p class="line"></p>
-          <p class="con">{{lang.FloatMoney3}}</p>
-        </div>
-        <div class="last_block">
-          <p>{{lang.FloatBigMoney}}</p>
-        </div>
-      </div>
+    </div>
+    <div class="container">
+
+
+
       <div class="block4">
         <p class="title">{{lang.EconomicModels}}</p>
         <p class="text">{{lang.EconomicModelsDesc}}</p>
@@ -397,7 +404,7 @@ export default {
     background: url('../assets/images/new/right_bg.png') no-repeat;
     background-size: 100% 100%;
     width: 250px;
-    margin-left: 950px;
+    margin-left:  55%;
     .block_img{
       position: absolute;
       left: 50%;
@@ -468,16 +475,7 @@ export default {
     }
   }
 }
-.container {
-  max-width: 1200px;
-  padding: 0 20px;
-  margin: 0 auto;
-  background: #fff;
-  .flex{
-    display: flex;
-    justify-content: space-around;
-  }
-  .block3{
+.block3{
     display: flex;
 
     height: 619px;
@@ -485,6 +483,16 @@ export default {
     padding: 173px 20px;
     margin-bottom: 160px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .cont{
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      width: 100%;
+    }
 
     .left_bg {
 
@@ -492,7 +500,6 @@ export default {
         height: 100%;
         top: 0;
         left: 0;
-        width: 500px;
 
       }
 
@@ -566,6 +573,16 @@ export default {
 
     }
   }
+.container {
+  max-width: 1200px;
+  padding: 0 20px;
+  margin: 0 auto;
+  background: #fff;
+  .flex{
+    display: flex;
+    justify-content: space-around;
+  }
+
   .block4{
     height: 1300px;
     max-width: 1200px;
@@ -839,7 +856,8 @@ export default {
   .item_wrapper {
     display: flex;
     flex-wrap: nowrap;
-    margin-top: 60px;
+    padding-top: 60px;
+    overflow: auto;
 
     .item {
       margin-right: 10px;
