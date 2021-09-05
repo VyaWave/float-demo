@@ -3,7 +3,11 @@
     <div class="cont">
       <img class="float" src="../assets/images/new/Float.png" alt="">
       <img class="map" src="../assets/images/new/map.png" alt="">
-      <div class="footer">Copyright © 2021 XXXXXXXXXXXXXXXXXX</div>
+      <div class="footer">
+       <el-divider style="margin: 0"></el-divider>
+
+        Copyright © 2021 XXXXXXXXXXXXXXXXXX
+      </div>
     </div>
   </div>
 </template>
@@ -17,6 +21,8 @@ export default {};
   height: 310px;
   background: #1C1D28;
   color: #888;
+  position: relative;
+
   .cont {
     max-width: 1200px;
     margin: 0 auto;
@@ -26,13 +32,16 @@ export default {};
     height: 310px;
     align-items: center;
     position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+
     img{
       position: absolute;
       display: inline-block;
     }
     .float{
       top: 40px;
-      left: 0;
+      left: 30px;
       width: 59px;
       height: 18px;
     }
@@ -43,30 +52,21 @@ export default {};
       height: 73px;
     }
     .footer{
-      width: 100%;
+      box-sizing: border-box;
       height: 30px;
       line-height: 30px;
-      border-top: 1px solid #888;
       font-size: 12px;
       position: absolute;
       bottom: 0;
+      left: 20px;
+      right: 20px;
+
+      .el-divider {
+        margin: 0;
+        background: #888;
+      }
     }
   }
- 
-}
-@media only screen and (min-width: 1000px) and (max-width: 1300px) {
-  .box .cont {
-    max-width: 1000px;
-    padding: 0 20px;
-  }
-}
-@media only screen and (max-width: 750px) {
-  .box .social {
-    display: none;
-  }
-  .footer {
-    width: 100%;
-    text-align: center;
-  }
+
 }
 </style>

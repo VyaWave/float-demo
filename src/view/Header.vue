@@ -1,70 +1,184 @@
 <template>
-  <div class="header">
-    <div class="content">
+  <div :class="isMobile ? 'header-mobile' : 'header'">
+    <div class="content" v-show="!isMobile">
       <img class="logo" src="../assets/images/new/logo.png" alt="">
       <div class="nav">
-        <div>{{language1 ? zh.Home : en.Home}}</div>
-        <div>{{language1 ? zh.Github : en.Github}}</div>
-        <div>{{language1 ? zh.Group : en.Group}}</div>
-        <div>{{language1 ? zh.ContractUs : en.ContractUs}}</div>
+        <div>{{lang.Home}}</div>
+        <div>{{lang.Github}}</div>
+        <div>{{lang.Group}}</div>
+        <div>{{lang.ContractUs}}</div>
         <div class="flex">
           <img src="../assets/images/new/gitHub_icon.png" alt="">
-          <div>Get Status <i class="el-icon-arrow-right"></i></div>
+          <div>{{lang.GetStatus}} <i class="el-icon-arrow-right"></i></div>
         </div>
       </div>
-      <div class="right">
-        <el-dropdown @command="handleClick">
+      <div class="right atom_cursor">
+        <el-dropdown @command="handleClick" trigger="click" >
           <span class="el-dropdown-link text">
             {{language}}<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="中文">中文</el-dropdown-item>
-            <el-dropdown-item command="En">En</el-dropdown-item>
+            <el-dropdown-item command="English">English</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
+    </div>
+
+    <div v-show="isMobile" class="mobile-prefix atom_flex_between">
+
+
+      <img class="logo" src="../assets/images/new/mobile_logo.png" alt="">
+      <div class="right">
+          <el-button type="default" class="right_wrapper">{{lang.GetStatus}} <i class="el-icon-arrow-right"/></el-button>
+          <img src="../assets/images/new/menu.png" alt=""  @click="dialogVisible = true">
+      </div>
+      <el-dialog
+        class="top-modal"
+        :visible.sync="dialogVisible"
+        width="90%"
+        :destroy-on-close="false"
+        :before-close="handleClose">
+         <div slot="title" class="dialog-footer">
+            <img class="logo-modal" style="height: 24px" src="../assets/images/new/logo.png" alt="">
+        </div>
+        <p class="out_wrap">
+          Home
+        </p>
+
+        <p class="out_wrap">
+          Github
+        </p>
+
+        <p class="out_wrap">
+          Group
+        </p>
+        <p class="out_wrap">
+          Contract Us
+        </p>
+
+        <p class="btn-item">
+          <el-button type="default">{{lang.GetStatus}} <i class="el-icon-arrow-right"/></el-button>
+        </p>
+
+        <p class="btn-item">
+
+          <el-dropdown @command="handleClick" :hide-on-click="true" trigger="click">
+
+            <el-button type="default">
+                {{language}}<i class="el-icon-arrow-down el-icon--right"></i>
+            </el-button>
+
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item command="中文">中文</el-dropdown-item>
+              <el-dropdown-item command="English">English</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </p>
+
+      </el-dialog>
+
     </div>
 
   </div>
 </template>
 
 <script>
-import ZH from "../assets/script/zh.json";
-import EN from "../assets/script/EN.json";
+
+import { computeDeviceModal } from '../utils/resize.js'
+import { GET_LOCALE } from '../utils/locale.js'
+
 export default {
   props: ["input"],
   data() {
+
+    const LANG = GET_LOCALE();
+
     return {
       value: this.input || "",
-      language: "En",
-      language1: false, // true 中文 false 英文
-      zh: ZH,
-      en: EN,
+      language: localStorage.getItem("current_lang") === "zh" ? "中文": "English",
+      lang: LANG,
+      isMobile:false,
+      dialogVisible: false
     };
   },
+
+  destroyed() {
+    window.removeEventListener(
+      "resize", this.handleResize
+    )
+  },
+
+  mounted() {
+
+    let deviceInfo = computeDeviceModal()
+
+    if (deviceInfo.isMobile) {
+      this.isMobile = true
+    } else {
+      this.isMobile = false
+    }
+
+    window.addEventListener(
+      "resize",
+      this.handleResize
+    )
+
+  },
+
   watch: {
     input: function (val) {
       this.value = val;
     },
   },
   methods: {
+    handleClose(done) {
+      done()
+    },
+    handleResize() {
+      const deviceInfo = computeDeviceModal();
+        if (deviceInfo.isMobile) {
+          this.isMobile = true
+        } else {
+          this.isMobile = false
+        }
+    },
     handleSearch() {
       this.$emit("searchData", this.value);
     },
     handleClick(command) {
       this.language = command;
       if (command == "中文") {
-        this.language1 = true;
+        localStorage.setItem("current_lang", "zh")
+        this.lang = GET_LOCALE();
       } else {
-        this.language1 = false;
+        localStorage.setItem("current_lang", "en");
+        this.lang = GET_LOCALE();
+
       }
-      this.$emit("switchLanguage", command);
+      this.$emit("switchLanguage");
     },
   },
 };
 </script>
 
 <style lang="less" scoped>
+.atom_cursor {
+  cursor: pointer;
+}
+
+.atom_flex_between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.atom_flex_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .header {
   width: 100%;
   height: 130px;
@@ -170,6 +284,70 @@ export default {
   }
   .el-input-group__prepend {
     border-right: 1px solid #323b48;
+  }
+}
+
+.header-mobile {
+  height:80px;
+  border-bottom: 1px solid #FAFAFA;
+
+  .mobile-prefix {
+
+    height: 100%;
+    width: 100%;
+    padding: 0 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+
+    .logo {
+      height: 30px;
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+
+      .right_wrapper {
+        border: 1px solid #DEDFE4;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        padding: 0 10px;
+        font-weight: 600;
+      }
+
+      img {
+        width: 28px;
+        height: 28px;
+        margin-left: 10px;
+      }
+    }
+
+  }
+
+}
+
+.top-modal {
+
+  padding: 20px;
+
+  .out_wrap {
+    font-size: 16px;
+    color: #14141A;
+    margin: 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #FAFAFA;
+
+  }
+  .btn-item {
+    margin: 10px 0;
   }
 }
 </style>
