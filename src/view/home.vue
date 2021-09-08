@@ -202,19 +202,19 @@
         <p class="notice_title">{{lang.FloatMoney}}</p>
         <div class="item_wrapper">
           <div class="item">
-            <div class="block-4-img"></div>
+            <div class="block-4-img first"></div>
             <p class="title">5%</p>
             <p class="line"></p>
             <p class="con">{{lang.FloatMoney1}}</p>
           </div>
           <div class="item">
-            <div class="block-4-img"></div>
+            <div class="block-4-img second"></div>
             <p class="title">15%</p>
             <p class="line"></p>
             <p class="con">{{lang.FloatMoney2}}</p>
           </div>
           <div class="item">
-            <div class="block-4-img"></div>
+            <div class="block-4-img last"></div>
             <p class="title">80% {{lang.AirDrop}}</p>
             <p class="line"></p>
             <p class="con">{{lang.FloatMoney3}}</p>
@@ -534,17 +534,17 @@ export default {
         margin: 0 auto auto;
         width: 130px;
         height: 178px;
-        margin-top: -100px;
+        margin-top: -80px;
         &.icon1{
-          background: url("../assets/images/new/icon1.png");
+          background: url("../assets/images/new/1.png");
           background-size: cover;
         }
         &.icon2{
-          background: url("../assets/images/new/icon2.png");
+          background: url("../assets/images/new/2.png");
           background-size: cover;
         }
         &.icon3{
-          background: url("../assets/images/new/icon3.png");
+          background: url("../assets/images/new/3.png");
           background-size: cover;
         }
 
@@ -888,7 +888,22 @@ export default {
         flex-shrink: 0;
         width: 65px;
         height: 90px;
-        background: url("../assets/images/new/float1-1.png");
+        background: url("../assets/images/new/1.png");
+        background-size: cover;
+
+        &.second {
+           background: url("../assets/images/new/2.png");
+          background-size: cover;
+
+        }
+
+        &.last {
+
+           background: url("../assets/images/new/3.png");
+          background-size: cover;
+
+        }
+
       }
 
       .title {
