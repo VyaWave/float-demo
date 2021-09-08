@@ -25,7 +25,7 @@
         </div>
         <div class="fourline">
           <span>{{lang.Mews}}</span>
-          {{lang.CryptoDesc}}
+          <a href="">{{lang.CryptoDesc}}</a>
           <i class="el-icon-arrow-right"></i>
         </div>
       </div>
@@ -357,7 +357,7 @@ export default {
   .left{
     max-width: 1200px;
     position: absolute;
-    left: 50%;
+    left: 45%;
     margin-left: -600px;
     .oneline{
       font-size: 18px;
@@ -373,7 +373,7 @@ export default {
       }
     }
     .twoline{
-      font-size: 64px;
+      font-size: 50px;
       font-weight: 800;
       color: #14141A;
       margin-top: 20px;
@@ -381,9 +381,9 @@ export default {
     }
     .threeline{
       color:#656E7C;
-      width: 487px;
+      width: 550px;
       margin: 40px 0;
-      font-size: 14px;
+      font-size: 16px;
     }
     .fourline{
       color: #656E7C;
@@ -433,7 +433,7 @@ export default {
   font-family: Source Han Sans CN;
   height: 600px;
   .title{
-    font-size: 40px;
+    font-size: 34px;
     font-weight: 800;
     color: #14141A;
   }
@@ -470,7 +470,7 @@ export default {
       margin-top: 10px;
     }
     .title{
-      font-size: 24px;
+      font-size: 20px;
       color: #14141A;
     }
   }
@@ -497,6 +497,7 @@ export default {
     .left_bg {
 
         position: absolute;
+        width: 60%;
         height: 100%;
         top: 0;
         left: 0;
@@ -570,7 +571,7 @@ export default {
       }
     }
     .last_block{
-      font-size: 30px;
+      font-size: 28px;
       font-family: Source Han Sans CN;
       font-weight: 800;
       color: #14141A;
@@ -596,11 +597,11 @@ export default {
     max-width: 1200px;
     .title{
       color: #14141A;
-      font-size: 40px;
+      font-size: 34px;
       font-weight: 800;
     }
     .text{
-      font-size: 14px;
+      font-size: 16px;
       color: #656E7C;
       margin-bottom: 80px;
     }
@@ -639,7 +640,7 @@ export default {
       height: 600px;
       background: url('../assets/images/new/block4.png') no-repeat;
       background-size: cover;
-      font-size: 36px;
+      font-size: 32px;
       font-weight: bold;
       div{
         width: 586px;
@@ -983,9 +984,10 @@ export default {
   align-items: center;
 
   p {
-    margin-top: -15px;
-    width: 90%;
+    margin-top: -40px;
+    width: 86%;
     text-align: center;
+    font-size: 18px;
     span{
       color: #2963FB;
     }

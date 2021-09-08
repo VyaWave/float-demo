@@ -5,7 +5,6 @@
       <img class="map" src="../assets/images/new/map.png" alt="">
       <div class="footer">
        <el-divider style="margin: 0"></el-divider>
-
         Copyright © 2021 XXXXXXXXXXXXXXXXXX
       </div>
     </div>
@@ -63,7 +62,7 @@ export default {};
 
       .el-divider {
         margin: 0;
-        background: #888;
+        background: rgba(255, 255, 255, 0.1)
       }
     }
   }

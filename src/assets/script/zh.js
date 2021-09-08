@@ -8,7 +8,7 @@ export default {
   "PrivateSecure": "中文  Private Secure",
   "Communication": "中文  Communication",
   "FloatDesc": "中文  Float is a secure messaging app, crypto wallet, and Web3 browser built with state of the art technology.",
-  "Mews": "中文  MEWS",
+  "Mews": "消息",
   "CryptoDesc": "中文 Crypto as a Public Good: Liberty",
   "FloatBigTitle": "中文 Float is an open source communication platform",
   "FloatBigDesc":"中文 It belongs to one of the ecology of zhitu Public chain",

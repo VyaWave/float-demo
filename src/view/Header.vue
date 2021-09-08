@@ -7,21 +7,24 @@
         <div>{{lang.Github}}</div>
         <div>{{lang.Group}}</div>
         <div>{{lang.ContractUs}}</div>
+      </div>
+      <div class="right_new atom_cursor">
         <div class="flex">
           <img src="../assets/images/new/gitHub_icon.png" alt="">
-          <div>{{lang.GetStatus}} <i class="el-icon-arrow-right"></i></div>
+          <div class="need_hover">{{lang.GetStatus}} <i class="el-icon-arrow-right"></i></div>
         </div>
-      </div>
-      <div class="right atom_cursor">
-        <el-dropdown @command="handleClick" trigger="click" >
-          <span class="el-dropdown-link text">
-            {{language}}<i class="el-icon-arrow-down el-icon--right"></i>
-          </span>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="中文">中文</el-dropdown-item>
-            <el-dropdown-item command="English">English</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
+        <div class="right">
+          <el-dropdown @command="handleClick" trigger="click" >
+            <span class="el-dropdown-link text">
+              {{language}}<i class="el-icon-arrow-down el-icon--right"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item command="中文">中文</el-dropdown-item>
+              <el-dropdown-item command="English">English</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
+        
       </div>
     </div>
 
@@ -183,43 +186,55 @@ export default {
 
 .header {
   width: 100%;
-  height: 130px;
+  height: 100px;
   background: #fff;
   color: #333;
   border-bottom: 2px solid #FAFAFA;
   .content {
-    max-width: 1200px;
-    // padding: 0 20px;
+    // max-width: 1200px;
+    padding: 0 50px;
     margin: 0 auto;
-    height: 130px;
+    height: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     .nav{
       display: flex;
-      width: 80%;
+      width: 60%;
       justify-content: space-around;
       align-items: center;
-      font-size: 18px;
+      font-size: 16px;
       font-family: 'SourceHanSansCN-Regular';
+      
+    }
+    .right_new{
+      display: flex;
       .flex{
         display: flex;
         justify-content: space-around;
         align-items: center;
         img{
-          width: 32px;
-          height: 31px;
-          margin-right: 32px;
+          width: 22px;
+          height: 22px;
+          margin-right: 20px;
         }
-        div{
+        div.need_hover{
           border: 1px solid #DEDFE4;
-          height: 60px;
-          width: 200px;
+          border-radius: 2px;
+          height: 44px;
+          width: 170px;
           text-align: center;
-          line-height: 60px;
+          line-height: 44px;
           cursor: pointer;
           i{
             margin-left: 20px;
+          }
+          &:hover{
+            background: #000;
+            color: #fff;
+            i{
+              color: #fff;
+            }
           }
         }
       }
@@ -229,23 +244,35 @@ export default {
       align-items: center;
       justify-content: center;
       border: 1px solid #DEDFE4;
-      width: 119px;
-      height: 60px;
+      border-radius: 2px;
+      width: 100px;
+      height: 44px;
+      font-weight: bold;
+      margin-left: 20px;
       i{
         margin-left: 10px;
+      }
+       &:hover{
+        background: #000;
+        .text {
+          color: #fff;
+        }
+        i{
+          color: #fff;
+        }
       }
     }
   }
   .logo {
-    width: 133px;
-    height: 44px;
+    width: 100px;
+    height: 36px;
   }
   .language {
     width: 20px;
     height: 20px;
   }
   .text {
-    font-size: 18px;
+    font-size: 14px;
     font-family: PingFang SC;
     font-weight: 500;
     color: #333;

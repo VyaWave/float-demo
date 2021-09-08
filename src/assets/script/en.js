@@ -8,7 +8,7 @@ export default {
   "PrivateSecure": "Private Secure",
   "Communication": "Communication",
   "FloatDesc": "Float is a secure messaging app, crypto wallet, and Web3 browser built with state of the art technology.",
-  "Mews": "MEWS",
+  "Mews": "NEWS",
   "CryptoDesc": "Crypto as a Public Good: Liberty",
   "FloatBigTitle": "Float is an open source communication platform",
   "FloatBigDesc":"It belongs to one of the ecology of zhitu Public chain",
