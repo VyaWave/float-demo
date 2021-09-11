@@ -15,7 +15,6 @@
         <div class="twoline">
           {{lang.PrivateSecure}} <br/>
           {{lang.Communication}}
-
         </div>
         <div class="threeline">
           {{lang.FloatDesc}}
@@ -35,7 +34,7 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container1">
       <div class="block2">
         <div class="title">{{lang.FloatBigTitle}}</div>
         <div class="tips">{{lang.FloatBigDesc}}</div>
@@ -357,8 +356,8 @@ export default {
   .left{
     max-width: 1200px;
     position: absolute;
-    left: 45%;
-    margin-left: -600px;
+    left: 5%;
+    // margin-left: -600px;
     .oneline{
       font-size: 18px;
       font-weight: bold;
@@ -429,7 +428,7 @@ export default {
 }
 .block2{
   margin-top: 100px;
-  text-align: center;
+  // text-align: center;
   font-family: Source Han Sans CN;
   height: 600px;
   .title{
@@ -444,7 +443,7 @@ export default {
   }
   .block2_flex{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     text-align: left;
     margin-top: 50px;
   }
@@ -453,13 +452,14 @@ export default {
   }
   .block2_right{
     margin-top: 60px;
+    width: 40%;
     img{
       width: 400px;
     }
   }
   .con_flex{
     display: flex;
-    justify-content: space-around;
+    // justify-content: space-around;
     font-size: 14px;
     color: #656E7C;
     margin-top: 50px;
@@ -582,6 +582,11 @@ export default {
 
     }
   }
+.container1{
+  width: 100%;
+  margin-left: 5%;
+  padding: 0;
+}
 .container {
   max-width: 1200px;
   padding: 0 20px;
