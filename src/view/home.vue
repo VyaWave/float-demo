@@ -930,6 +930,7 @@ export default {
         height: 3px;
         background: #2963FB;
         margin: 10px auto 10px;
+        flex-shrink: 0;
       }
 
       .con {
@@ -999,7 +1000,7 @@ export default {
 
   p {
     margin-top: -40px;
-    width: 86%;
+    width: 75%;
     text-align: center;
     font-size: 18px;
     span{
@@ -1061,7 +1062,7 @@ export default {
 
       .title {
         color: white;
-        font-size: 20px;
+        font-size: 14px;
       }
 
     }
