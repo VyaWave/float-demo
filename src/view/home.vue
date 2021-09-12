@@ -409,8 +409,8 @@ export default {
     height: 550px;
     background: url('../assets/images/new/right_bg.png') no-repeat;
     background-size: 100% 100%;
-    width: 250px;
-    margin-left:  55%;
+    width: 600px;
+    margin-left:  50%;
     .block_img{
       position: absolute;
       left: 50%;
@@ -887,7 +887,7 @@ export default {
       flex-direction: column;
       align-items: center;
       width: 150px;
-      height: 150px;
+      height: 185px;
       background: white;
       color: #14141A;
       flex-shrink: 0;
