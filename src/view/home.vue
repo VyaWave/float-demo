@@ -6,33 +6,35 @@
 
     <div class="block1">
       <div class="black"></div>
-
-      <div class="left">
-        <div class="oneline">
-          {{lang.CRYPTO_WALLET}}
-          <span></span>
+      <div class="block1_box">
+        <div class="left">
+          <div class="oneline">
+            {{lang.CRYPTO_WALLET}}
+            <span></span>
+          </div>
+          <div class="twoline">
+            {{lang.PrivateSecure}} <br/>
+            {{lang.Communication}}
+          </div>
+          <div class="threeline">
+            {{lang.FloatDesc}}
+          </div>
+          <div class="start atom_cursor">
+            {{lang.GetStatus}} <i class="el-icon-arrow-right"></i>
+          </div>
+          <div class="fourline">
+            <span>{{lang.Mews}}</span>
+            <a href="">{{lang.CryptoDesc}}</a>
+            <i class="el-icon-arrow-right"></i>
+          </div>
         </div>
-        <div class="twoline">
-          {{lang.PrivateSecure}} <br/>
-          {{lang.Communication}}
-        </div>
-        <div class="threeline">
-          {{lang.FloatDesc}}
-        </div>
-        <div class="start atom_cursor">
-          {{lang.GetStatus}} <i class="el-icon-arrow-right"></i>
-        </div>
-        <div class="fourline">
-          <span>{{lang.Mews}}</span>
-          <a href="">{{lang.CryptoDesc}}</a>
-          <i class="el-icon-arrow-right"></i>
+        <div class="right">
+          <div class="block_img">
+            <img src="../assets/images/new/block1.png" width="600" alt="">
+          </div>
         </div>
       </div>
-      <div class="right">
-        <div class="block_img">
-          <img src="../assets/images/new/block1.png" width="600" alt="">
-        </div>
-      </div>
+      
     </div>
     <div class="container1">
       <div class="block2">
@@ -353,11 +355,16 @@ export default {
     position: absolute;
     left: 60%;
   }
+  .block1_box{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
   .left{
     max-width: 1200px;
     position: absolute;
-    left: 25%;
-    // margin-left: -600px;
+    left: 600px;
+    margin-left: -600px;
     .oneline{
       font-size: 18px;
       font-weight: bold;
@@ -443,12 +450,12 @@ export default {
   }
   .block2_flex{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     text-align: left;
     margin-top: 50px;
   }
   .block2_left{
-    width: 20%;
+    width: 40%;
     margin-right: 100px;
   }
   .block2_right{
@@ -584,8 +591,8 @@ export default {
     }
   }
 .container1{
-  width: 100%;
-  margin-left: 5%;
+  width: 1200px;
+  margin: 0 auto;
   padding: 0;
 }
 .container {
