@@ -356,7 +356,7 @@ export default {
   .left{
     max-width: 1200px;
     position: absolute;
-    left: 5%;
+    left: 25%;
     // margin-left: -600px;
     .oneline{
       font-size: 18px;
@@ -443,12 +443,13 @@ export default {
   }
   .block2_flex{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     text-align: left;
     margin-top: 50px;
   }
   .block2_left{
-    width: 50%;
+    width: 20%;
+    margin-right: 100px;
   }
   .block2_right{
     margin-top: 60px;
