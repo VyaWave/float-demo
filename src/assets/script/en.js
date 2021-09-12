@@ -19,6 +19,7 @@ export default {
   "FloatBigTitle3":"FOT Output",
   "FloatBigDesc3":"Users pay for Float, spend FOT coins, and chat to mine FOT, which serves as the value of the Float ecosystem.",
   "FloatBigMoney": "FOT issued a total of 800 million",
+  "FloatMoney": "Owned by the FOT Foundation",
   "FloatMoney1": "Owned by the FOT Foundation",
   "FloatMoney2": "Community donation",
   "FloatMoney3": "(Chat mining, SAT pledge currency position air drop and others)",
