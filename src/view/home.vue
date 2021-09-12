@@ -873,6 +873,7 @@ export default {
     font-weight: bolder;
     font-weight: bolder;
     padding: 20px;
+    flex-shrink: 0;
   }
 
   .item_wrapper {
